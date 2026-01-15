@@ -1,0 +1,24 @@
+[build]
+  # Commande de build
+  command = "npm run build"
+  # Répertoire de publication
+  publish = "dist"
+
+# Configuration pour les SPAs (Single Page Applications)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Variables d'environnement (à configurer aussi dans Netlify UI)
+[build.environment]
+  NODE_VERSION = "18"
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
